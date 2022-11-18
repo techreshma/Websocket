@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Socket.IO chat</title>
+</head>
+<body>
+<div>
+  <p id="responseData"></p>
+</div>
+<span id="heart"></span>
+<span id='ct7' style="background-color: #FFFF00"></span>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+  socket.on('server request', function (action) {
+    //console.log(action)
+    document.getElementById('responseData').innerHTML = JSON.stringify(action)
+  });
+  socket.on('heartbeat', function (beat) {
+    document.getElementById('heart').innerHTML = JSON.stringify(beat)
+    //console.log(JSON.stringify(beat))
+  });
+
+</script>
+</body>
+</html>

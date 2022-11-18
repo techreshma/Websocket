@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Client</title>
+  </head>
+  <body>
+    <ul id="messages"></ul>
+    <form id="form" action="">
+      <textarea rows="15" cols="55" id="txtData"></textarea><br>
+      <button id="submitBtn">Send</button>
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+      var socket = io();
+      document.getElementById('submitBtn').addEventListener('click', function(e) {
+
+        e.preventDefault();
+        if(document.getElementById('txtData').value)
+        {
+          let actionType = document.getElementById('txtData').value;
+          socket.emit('client request', actionType);
+        }
+
+      });
+
+    </script>
+  </body>
+</html>
